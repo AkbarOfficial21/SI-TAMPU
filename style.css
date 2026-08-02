@@ -1,0 +1,455 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    padding: 20px 30px;
+    transition: all 0.3s ease;
+}
+
+.logo-section {
+    text-align: center;
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #6a11cb;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.login-header h1 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.login-header p {
+    color: #666;
+    font-size: 16px;
+}
+
+.form-group {
+    margin-bottom: 6px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 500;
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+    z-index: 2;
+}
+
+.form-control {
+    width: 100%;
+    padding: 9px 40px 10px 45px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    outline: none;
+    background-color: #f9f9f9;
+}
+
+.form-control:focus {
+    border-color: #6a11cb;
+    box-shadow: 0 0 0 2px rgba(106, 17, 203, 0.2);
+    background-color: #fff;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 43px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777;
+    z-index: 2;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.remember-me input {
+    margin-right: 8px;
+}
+
+.captcha-section {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.captcha-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.captcha-code {
+    flex: 1;
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    padding: 0px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+}
+
+.captcha-code::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 5px,
+        rgba(255, 255, 255, 0.1) 5px,
+        rgba(255, 255, 255, 0.1) 10px
+    );
+    pointer-events: none;
+}
+
+.captcha-input-container {
+    flex: 1;
+    position: relative;
+    min-width: 0;
+}
+
+.captcha-input {
+    width: 100%;
+    padding: 15px 20px 15px 0px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 3px;
+    font-family: 'Courier New', monospace;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+    height: 40px;
+}
+
+.captcha-input:focus {
+    border-color: #6a11cb;
+    box-shadow: 0 0 0 2px rgba(106, 17, 203, 0.2);
+    background-color: #fff;
+}
+
+.captcha-refresh {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777;
+    z-index: 2;
+    background: none;
+    border: none;
+    font-size: 18px;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.login-button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+    margin-bottom: 20px;
+}
+
+.login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(106, 17, 203, 0.4);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+.login-footer {
+    text-align: center;
+    color: #666;
+    padding-top: 0px;
+    border-top: 1px solid #eee;
+}
+
+.login-footer a {
+    color: #6a11cb;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s;
+}
+
+.login-footer a:hover {
+    color: #2575fc;
+    text-decoration: underline;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.loading-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.loading-content {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    min-width: 200px;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(106, 17, 203, 0.2);
+    border-top: 4px solid #6a11cb;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px auto;
+}
+
+.loading-text {
+    color: #6a11cb;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error {
+    border-color: #ff4757 !important;
+    box-shadow: 0 0 0 2px rgba(255, 71, 87, 0.2) !important;
+}
+
+.success {
+    border-color: #2ed573 !important;
+    box-shadow: 0 0 0 2px rgba(46, 213, 115, 0.2) !important;
+}
+
+.error-message {
+    color: #ff4757;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        padding: 20px 70px;
+    }
+    
+    .login-header h1 {
+        font-size: 24px;
+    }
+    
+    .form-control {
+        padding: 12px 40px 12px 40px;
+    }
+    
+    .captcha-code {
+        font-size: 16px;
+        letter-spacing: 2px;
+        height: 44px;
+    }
+    
+    .captcha-input {
+        font-size: 15px;
+        height: 44px;
+        padding: 12px 40px 12px 12px;
+    }
+    
+    .captcha-refresh {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 12px 30px;
+    }
+    
+    .login-header h1 {
+        font-size: 22px;
+    }
+    
+    .login-header p {
+        font-size: 14px;
+    }
+    
+    .form-control {
+        font-size: 14px;
+    }
+    
+    .login-button {
+        padding: 12px;
+        font-size: 15px;
+    }
+    
+    .logo {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .loading-spinner {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .loading-text {
+        font-size: 16px;
+    }
+    
+    .loading-content {
+        padding: 30px 20px;
+        min-width: 180px;
+    }
+    
+    .captcha-group {
+        gap: 8px;
+    }
+    
+    .captcha-code {
+        font-size: 16px;
+        letter-spacing: 2px;
+        padding: 0px;
+        height: 44px;
+        width: 100%;
+        min-width: unset;
+    }
+    
+    .captcha-input-container {
+        width: 100%;
+    }
+    
+    .captcha-input {
+        padding: 12px 40px 12px 12px;
+        font-size: 14px;
+        height: 44px;
+        width: 100%;
+    }
+    
+    .captcha-refresh {
+        font-size: 16px;
+        padding: 10px;
+        right: 0px;
+    }
+    
+    .captcha-section {
+        margin-bottom: 15px;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 360px) {
+    .login-container {
+        padding: 20px 10px;
+    }
+    
+    .captcha-code {
+        font-size: 14px;
+        letter-spacing: 1px;
+        height: 40px;
+    }
+    
+    .captcha-input {
+        font-size: 13px;
+        height: 40px;
+        letter-spacing: 2px;
+    }
+    
+    .captcha-refresh {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

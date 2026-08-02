@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="id" data-theme="system">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Dashboard Si-Tampu</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <link rel="stylesheet" href="dashboard.css">
+
+<style>
+.notification-selector{position:relative}.notification-selector .theme-main{position:relative}.top-notification-badge{position:absolute;top:-5px;right:-5px;min-width:18px;height:18px;padding:0 5px;border-radius:10px;background:#ef4444;color:#fff;font-size:10px;display:grid;place-items:center}.notification-menu{position:absolute;right:0;top:48px;width:min(390px,calc(100vw - 24px));max-height:520px;background:var(--card-bg,#fff);border:1px solid rgba(148,163,184,.25);border-radius:16px;box-shadow:0 18px 45px rgba(15,23,42,.18);display:none;z-index:1000;overflow:hidden}.notification-menu.open{display:block}.notification-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid rgba(148,163,184,.18)}.notification-head button{border:0;background:transparent;color:#2563eb;cursor:pointer}.notification-list{max-height:450px;overflow:auto}.notification-item{display:flex;gap:12px;padding:13px 16px;border-bottom:1px solid rgba(148,163,184,.12);cursor:pointer}.notification-item.unread{background:rgba(37,99,235,.08)}.notification-icon{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:rgba(37,99,235,.12);color:#2563eb;flex:0 0 auto}.notification-copy{min-width:0}.notification-copy strong,.notification-copy small,.notification-copy span{display:block}.notification-copy span{font-size:13px;line-height:1.35;margin:3px 0}.notification-copy small{opacity:.65}.notification-empty{padding:34px 16px;text-align:center;opacity:.65}.chat-list-title{font-weight:700;padding:12px 14px;border-bottom:1px solid rgba(148,163,184,.15)}.contact-meta{display:flex;gap:6px;align-items:center}.contact-meta small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.bubble-time{display:block;font-size:10px;opacity:.6;margin-top:4px}.password-visible-wrap{display:flex;gap:8px}.password-visible-wrap input{flex:1}.password-visible-wrap button{width:44px;border:1px solid rgba(148,163,184,.35);border-radius:10px;background:transparent;cursor:pointer}.user-toolbar{display:flex;gap:10px;align-items:center}.user-toolbar .table-search{min-width:230px}.chat-contact{position:relative}.contact-count{margin-left:auto;min-width:22px;height:22px;padding:0 6px;border-radius:12px;background:#ef4444;color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center}.contact-copy{min-width:0;flex:1}.contact-last{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px}@media(max-width:760px){.user-toolbar{width:100%;flex-direction:column;align-items:stretch}.user-toolbar .table-search{min-width:0;width:100%}}@media(max-width:760px){.notification-menu{position:fixed;top:64px;right:12px;left:12px;width:auto}}
+</style>
+
+<style id="mobile-user-table-fix">
+.chat-contact{width:100%;border:0;background:transparent;text-align:left;font:inherit;color:inherit;display:flex;align-items:center;gap:10px;cursor:pointer}.chat-contact:hover{background:rgba(37,99,235,.06)}.chat-contact.active{background:rgba(37,99,235,.12)}.contact-count{flex:0 0 auto;box-shadow:0 0 0 3px var(--card-bg,#fff)}
+@media(max-width:760px){.table-responsive{overflow:visible!important}.user-table{display:block;width:100%;min-width:0!important}.user-table thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.user-table tbody,.user-table tr,.user-table td{display:block;width:100%;box-sizing:border-box}.user-table tbody{display:grid;gap:12px}.user-table tr{border:1px solid rgba(148,163,184,.24);border-radius:14px;padding:8px 12px;background:var(--card-bg,#fff);box-shadow:0 4px 14px rgba(15,23,42,.05)}.user-table td{display:grid!important;grid-template-columns:92px minmax(0,1fr);align-items:center;gap:10px;padding:8px 0!important;border:0!important;white-space:normal!important;overflow-wrap:anywhere}.user-table td::before{content:attr(data-label);font-size:12px;font-weight:700;color:var(--text-muted,#64748b)}.user-table td[data-label="Aksi"]{align-items:start}.user-table .action-buttons{display:flex;flex-wrap:wrap;gap:7px}.user-table .action-buttons button{flex:1 1 90px;min-width:0}.card-title-row{align-items:stretch}.user-toolbar{width:100%}.user-toolbar .btn-primary{width:100%}}
+</style>
+
+<style id="chat-layout-full-fix">
+#chatPage{height:calc(100dvh - 112px);min-height:580px;overflow:hidden}#chatPage .page-heading{margin-bottom:12px}.chat-layout{display:grid!important;grid-template-columns:minmax(250px,34%) minmax(0,1fr);height:calc(100% - 78px)!important;min-height:500px;max-height:none!important;overflow:hidden}.chat-list{display:grid!important;grid-template-rows:auto minmax(0,1fr);min-height:0;overflow:hidden}.chat-list-title{flex:0 0 auto}#chatList{min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable}.chat-panel{display:grid!important;grid-template-rows:auto minmax(0,1fr) auto;min-height:0;overflow:hidden}.chat-header{flex:0 0 auto}.chat-body{min-height:0!important;height:auto!important;max-height:none!important;overflow-y:auto!important;overscroll-behavior:contain;scrollbar-gutter:stable;padding-bottom:18px}.chat-input{position:relative!important;bottom:auto!important;flex:0 0 auto}.chat-contact{min-height:72px;padding:12px 14px!important}.contact-count{margin-left:auto!important;display:grid!important;visibility:visible!important;opacity:1!important;z-index:2}.chat-layout,.chat-list,.chat-panel{width:100%!important}.page-container{max-width:none!important}.main-content{min-width:0}.chat-panel .bubble{max-width:min(76%,560px)}
+@media(max-width:760px){#chatPage{height:auto;min-height:calc(100dvh - 90px);overflow:visible}.chat-layout{grid-template-columns:1fr;height:auto!important;min-height:0;gap:12px;overflow:visible}.chat-list{height:280px;min-height:280px}.chat-panel{height:calc(100dvh - 180px);min-height:520px}.chat-panel .bubble{max-width:86%}}
+</style>
+
+<style id="chat-mobile-navigation-fix">
+.contact-name-row{display:flex;align-items:center;gap:8px;min-width:0}.contact-name-row strong{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.contact-name-row time{margin-left:auto;font-size:10px;opacity:.6;flex:0 0 auto}.chat-back-btn{display:none;width:38px;height:38px;border:0;border-radius:10px;background:rgba(37,99,235,.1);color:#2563eb;cursor:pointer;flex:0 0 auto}.chat-header{display:flex!important;align-items:center;gap:10px}.chat-header>div{min-width:0}.chat-header strong,.chat-header small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:760px){#chatPage{height:calc(100dvh - 82px)!important;min-height:0!important;overflow:hidden!important}.chat-layout{display:block!important;height:calc(100% - 74px)!important;min-height:0!important;overflow:hidden!important}.chat-list,.chat-panel{height:100%!important;min-height:0!important;border-radius:14px}.chat-panel{display:none!important}.chat-layout.mobile-conversation-open .chat-list{display:none!important}.chat-layout.mobile-conversation-open .chat-panel{display:grid!important;grid-template-rows:auto minmax(0,1fr) auto}.chat-back-btn{display:grid;place-items:center}.chat-list{grid-template-rows:auto minmax(0,1fr)!important}.chat-list #chatList{height:100%;overflow-y:auto}.chat-body{height:auto!important;min-height:0!important;overflow-y:auto!important}.chat-input{position:sticky!important;bottom:0;background:var(--card-bg,#fff);z-index:3}.chat-contact{min-height:76px}.contact-last{max-width:none!important}.page-container{padding-bottom:0!important}}
+</style>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-logo"><img src="LOGO.PNG" alt="Logo Si-Tampu" onerror="this.style.display='none';this.parentElement.textContent='ST'"></div>
+      <div class="brand-copy"><strong>SI-TAMPU</strong><small>Sistem Pengajuan Surat</small></div>
+      <button class="mobile-close" id="mobileClose" aria-label="Tutup menu"><i class="fas fa-xmark"></i></button>
+    </div>
+
+    <div class="menu-label">Menu Utama</div>
+    <nav class="side-nav" aria-label="Navigasi utama">
+      <button class="nav-item active" data-page="dashboardPage"><i class="fas fa-border-all"></i><span>Dashboard</span></button>
+      <button class="nav-item admin-only" data-page="userPage"><i class="fas fa-users"></i><span>User</span></button>
+      <button class="nav-item" data-page="pengajuanPage"><i class="fas fa-file-circle-plus"></i><span>Pengajuan</span></button>
+      <button class="nav-item" data-page="chatPage"><i class="fas fa-comments"></i><span>Chat</span></button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="profile-card" id="profileCard" tabindex="0">
+        <div class="profile-avatar" id="profileInitial">U</div>
+        <div class="profile-text"><strong id="sideName">Nama User</strong><small id="sideRole">Jabatan</small></div>
+        <i class="fas fa-chevron-up profile-chevron"></i>
+      </div>
+      <div class="profile-menu" id="profileMenu">
+        <button id="profileInfoBtn"><i class="fas fa-id-card"></i> Profil</button>
+        <button id="logoutBtn"><i class="fas fa-arrow-right-from-bracket"></i> Keluar</button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="icon-button" id="sidebarToggle" aria-label="Buka atau tutup sidebar"><i class="fas fa-bars"></i></button>
+        <span id="currentDate">-</span>
+      </div>
+      <div class="topbar-right"><div class="notification-selector"><button class="theme-main" id="notificationMain" title="Notifikasi"><i class="fas fa-bell"></i><b class="top-notification-badge" id="notificationBadge" style="display:none">0</b></button><div class="notification-menu" id="notificationMenu"><div class="notification-head"><strong>Semua Notifikasi</strong><button id="markAllReadBtn">Tandai dibaca</button></div><div id="notificationList" class="notification-list"><div class="notification-empty">Belum ada notifikasi.</div></div></div></div><div class="theme-selector">
+          <button class="theme-main" id="themeMain" title="Pilih tema"><i class="fas fa-circle-half-stroke"></i></button>
+          <div class="theme-menu" id="themeMenu">
+            <button data-theme="light"><i class="fas fa-sun"></i><span>Light</span><i class="fas fa-check check"></i></button>
+            <button data-theme="dark"><i class="fas fa-moon"></i><span>Dark</span><i class="fas fa-check check"></i></button>
+            <button data-theme="colorful"><i class="fas fa-palette"></i><span>Colorful</span><i class="fas fa-check check"></i></button>
+            <button data-theme="system"><i class="fas fa-desktop"></i><span>System</span><i class="fas fa-check check"></i></button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-container">
+      <section class="page active" id="dashboardPage">
+        <div class="hero">
+          <div><h1>Semua Layanan dalam Satu Sistem!</h1><p id="welcome">Kelola pengajuan Surat Keterangan Tidak Mampu dengan mudah.</p></div>
+          <div class="hero-decoration"><i class="fas fa-file-shield"></i></div>
+        </div>
+
+        <div class="search-box"><i class="fas fa-search"></i><input id="menuSearch" placeholder="Cari menu atau layanan Si-Tampu..."><button id="clearSearch" aria-label="Hapus pencarian"><i class="fas fa-xmark"></i></button></div>
+
+        <div class="filter-chips" id="filterChips">
+          <button class="chip active" data-filter="all">Semua</button>
+          <button class="chip" data-filter="pengajuan">Pengajuan</button>
+          <button class="chip" data-filter="validasi">Validasi</button>
+          <button class="chip" data-filter="administrasi">Administrasi</button>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-icon warning"><i class="fas fa-clock"></i></div><div><span>Menunggu</span><strong id="statPending">12</strong><small>Pengajuan baru</small></div></article>
+          <article class="stat-card"><div class="stat-icon info"><i class="fas fa-spinner"></i></div><div><span>Diproses</span><strong id="statProcess">8</strong><small>Sedang diverifikasi</small></div></article>
+          <article class="stat-card"><div class="stat-icon success"><i class="fas fa-circle-check"></i></div><div><span>Selesai</span><strong id="statDone">45</strong><small>Pengajuan selesai</small></div></article>
+          <article class="stat-card"><div class="stat-icon primary"><i class="fas fa-chart-column"></i></div><div><span>Total</span><strong id="statTotal">65</strong><small>Seluruh pengajuan</small></div></article>
+        </div>
+
+        <div class="service-grid" id="serviceGrid">
+          <article class="service-card" data-category="pengajuan" data-page-target="pengajuanPage" data-keywords="buat pengajuan surat baru sktm"><div class="service-icon gradient-blue"><i class="fas fa-file-circle-plus"></i></div><h3>Buat Pengajuan</h3><p>Buat pengajuan Surat Keterangan Tidak Mampu baru.</p><div class="tags"><span>PENGAJUAN</span><span>SKTM</span></div></article>
+          <article class="service-card" data-category="pengajuan validasi" data-page-target="pengajuanPage" data-keywords="status riwayat pengajuan validasi"><div class="service-icon gradient-orange"><i class="fas fa-list-check"></i></div><h3>Status Pengajuan</h3><p>Lihat proses, status, dan riwayat pengajuan Anda.</p><div class="tags"><span>STATUS</span><span>RIWAYAT</span></div></article>
+          <article class="service-card" data-category="validasi" data-page-target="chatPage" data-keywords="chat ajuan pesan validator bantuan"><div class="service-icon gradient-purple"><i class="fas fa-message"></i></div><h3>Chat Ajuan</h3><p>Berkomunikasi dengan petugas mengenai pengajuan.</p><div class="tags"><span>CHAT</span><span>BANTUAN</span></div></article>
+          <article class="service-card admin-only" data-category="administrasi" data-page-target="userPage" data-keywords="kelola user admin pengguna"><div class="service-icon gradient-green"><i class="fas fa-users-gear"></i></div><h3>Kelola User</h3><p>Tambah, ubah, dan hapus akun pengguna sistem.</p><div class="tags"><span>ADMIN</span><span>USER</span></div></article>
+        </div>
+        <div class="no-results hidden" id="noResults"><i class="fas fa-magnifying-glass"></i><p>Menu tidak ditemukan.</p></div>
+      </section>
+
+      <section class="page" id="userPage">
+        <div class="page-heading"><div><h1>Kelola User</h1><p>Manajemen akun pengguna Si-Tampu.</p></div><button class="btn-secondary" id="refreshUsersBtn"><i class="fas fa-rotate"></i></button></div>
+        <div class="content-card"><div class="card-title-row"><h2><i class="fas fa-users"></i> Daftar User</h2><div class="user-toolbar"><input id="userSearch" class="table-search" placeholder="Cari user..."><button class="btn-primary" id="openAddUserBtn"><i class="fas fa-user-plus"></i> Tambah User</button></div></div><div class="table-responsive"><table class="user-table"><thead><tr><th>Username</th><th>Nama</th><th>Jabatan</th><th>Instansi</th><th>Aksi</th></tr></thead><tbody id="userTableBody"><tr><td colspan="5">Memuat data...</td></tr></tbody></table></div></div>
+      </section>
+
+      <section class="page" id="pengajuanPage">
+        <div class="page-heading"><div><h1>Pengajuan</h1><p>Kelola seluruh pengajuan Surat Keterangan Tidak Mampu.</p></div><button class="btn-primary" id="newSubmissionBtn"><i class="fas fa-plus"></i> Pengajuan Baru</button></div>
+        <div class="content-card"><div class="card-title-row"><h2><i class="fas fa-folder-open"></i> Daftar Pengajuan</h2><input id="submissionSearch" class="table-search" placeholder="Cari pengajuan..."></div><div class="table-responsive"><table class="user-table"><thead><tr><th>ID</th><th>Nama Pemohon</th><th>Tanggal</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="submissionTableBody"></tbody></table></div></div>
+      </section>
+
+      <section class="page" id="chatPage">
+        <div class="page-heading"><div><h1>Chat Antar User</h1><p>Pilih user untuk membuka chat. Badge pada setiap user menunjukkan pesan yang belum dibaca.</p></div></div>
+        <div class="chat-layout">
+          <div class="chat-list"><div class="chat-list-title">Pilih User</div><div id="chatList"></div></div>
+          <div class="chat-panel"><div class="chat-header"><button type="button" id="chatBackBtn" class="chat-back-btn" aria-label="Kembali ke daftar user"><i class="fas fa-arrow-left"></i></button><div><strong id="chatTitle">Pilih percakapan</strong><small id="chatSubtitle">-</small></div></div><div class="chat-body" id="chatBody"><div class="chat-placeholder"><i class="fas fa-comments"></i><p>Pilih percakapan untuk membuka chat.</p></div></div><form class="chat-input" id="chatForm"><input id="chatMessage" placeholder="Ketik pesan..." autocomplete="off"><button type="submit"><i class="fas fa-paper-plane"></i></button></form></div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<div id="addUserModal" class="modal hidden"><div class="modal-content"><div class="modal-head"><h3>Tambah User Baru</h3><button id="closeAddUserBtn"><i class="fas fa-times"></i></button></div><input id="newUsername" placeholder="Username"><div class="password-visible-wrap"><input id="newPassword" type="password" placeholder="Password minimal 6 karakter"><button type="button" id="toggleNewPassword" title="Lihat password"><i class="fas fa-eye"></i></button></div><input id="newNama" placeholder="Nama lengkap"><select id="newJabatan"><option>Admin</option><option>Validator</option><option>Operator</option></select><input id="newInstansi" placeholder="Instansi"><div class="modal-actions"><button class="btn-secondary" id="cancelAddUserBtn">Batal</button><button class="btn-primary" id="addUserBtn"><i class="fas fa-save"></i> Simpan User</button></div></div></div>
+
+<div id="editModal" class="modal hidden"><div class="modal-content"><div class="modal-head"><h3>Edit User</h3><button id="cancelEditBtn"><i class="fas fa-times"></i></button></div><input type="hidden" id="oldUsername"><input id="editUsername" placeholder="Username"><div class="password-visible-wrap"><input id="editPassword" type="text" placeholder="Password baru (opsional, tetap terlihat)"><button type="button" id="toggleEditPassword" title="Tampilkan atau sembunyikan password"><i class="fas fa-eye"></i></button></div><input id="editNama" placeholder="Nama lengkap"><select id="editJabatan"><option>Admin</option><option>Validator</option><option>Operator</option></select><input id="editInstansi" placeholder="Instansi"><div class="modal-actions"><button class="btn-secondary" id="cancelEditBtnBottom">Batal</button><button class="btn-primary" id="saveEditBtn"><i class="fas fa-save"></i> Simpan</button></div></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="config.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

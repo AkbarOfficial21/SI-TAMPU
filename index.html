@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Memuat...</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f9f9f9;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+    img {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+    }
+    p {
+      color: #555;
+      font-size: 1.1em;
+    }
+  </style>
+  <script>
+    // Tunggu 3 detik sebelum redirect
+    setTimeout(function() {
+      window.location.replace('login.html');
+    }, 1500);
+  </script>
+</head>
+<body>
+  <img src="Linear star.gif" alt="Loading..." />
+  <p>Memuat halaman, harap tunggu...</p>
+  <noscript>
+    <meta http-equiv="refresh" content="3; url=login.html">
+    <p>Jika tidak otomatis diarahkan, klik <a href="login.html">di sini</a>.</p>
+  </noscript>
+</body>
+</html>
+
